@@ -1,0 +1,11 @@
+{
+  "file_choice": 0.72,
+  "tool_choice": 0.70,
+  "retry_or_stop": 0.80,
+  "done": 0.85,
+  "diff_risk_max": 0.35,
+  "max_retries": 3,
+  "split_band": 0.12,
+  "irreversible": ["send", "merge", "pay", "delete", "push_main", "rotate_secret"],
+  "notes": "Tune these on operator examples. A model must not rewrite this file without clearing the gate node."
+}
