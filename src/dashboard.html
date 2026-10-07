@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Obzue agent graph</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 15px/1.45 ui-sans-serif, system-ui, sans-serif; background: #10141c; color: #e7edf5; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 22px; margin: 0 0 8px; }
+    p { color: #b7c3d4; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a3344; }
+    th { color: #8ea0b8; font-weight: 600; }
+    .gate { color: #f0b429; }
+    button, input { font: inherit; }
+    button { background: #d7e4f5; color: #10141c; border: 0; border-radius: 6px; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Obzue agent graph</h1>
+    <p>Static desk. Load a report.json from the runner. Nothing here calls a model or a network.</p>
+    <input id="file" type="file" accept="application/json" />
+    <button id="sample" type="button">Load last local note</button>
+    <p id="summary">No report loaded.</p>
+    <table>
+      <thead>
+        <tr><th>Fork</th><th>Question</th><th>Winner</th><th>P</th><th>Route</th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </main>
+  <script>
+    const summary = document.getElementById("summary");
+    const rows = document.getElementById("rows");
+    function paint(report) {
+      summary.textContent = `Closed ${report.loops_closed}. Forks ${report.forks_answered}. Least sure ${report.least_sure} (margin ${report.least_sure_margin}). Unattended ${report.unattended}.`;
+      rows.replaceChildren();
+      for (const row of report.decisions || []) {
+        const tr = document.createElement("tr");
+        for (const value of [row.id, row.question, row.winner, row.probability, row.route]) {
+          const td = document.createElement("td");
+          td.textContent = value;
+          if (row.route === "gate") td.className = "gate";
+          tr.append(td);
+        }
+        rows.append(tr);
+      }
+    }
+    document.getElementById("file").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      file.text().then((text) => paint(JSON.parse(text)));
+    });
+    document.getElementById("sample").addEventListener("click", () => {
+      summary.textContent = "No embedded sample. Run src/obzue_graph.py and load report.json.";
+    });
+  </script>
+</body>
+</html>
