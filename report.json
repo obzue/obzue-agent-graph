@@ -5,12 +5,18 @@
   "escalations": 2,
   "least_sure": "f2",
   "least_sure_margin": 0.08,
+  "decisions": [
+    {"id": "f1", "question": "which_tool", "winner": "pdf", "probability": 0.91, "margin": 0.69, "route": "code", "reason": "sharp"},
+    {"id": "f2", "question": "which_file", "winner": "graph.md", "probability": 0.74, "margin": 0.08, "route": "slow_brain", "reason": "below threshold or split"},
+    {"id": "f3", "question": "done", "winner": "yes", "probability": 0.88, "margin": 0.76, "route": "code", "reason": "sharp"},
+    {"id": "f4", "question": "diff_risk", "winner": "low", "probability": 0.81, "margin": 0.62, "route": "code", "reason": "sharp"},
+    {"id": "f5", "question": "which_tool", "winner": "push_main", "probability": 0.93, "margin": 0.73, "route": "gate", "reason": "irreversible verb waits", "irreversible": true}
+  ],
+  "alerts": [{"fork": "f2", "kind": "split"}, {"fork": "f5", "kind": "gate", "verb": "push_main"}],
   "unattended": false,
   "refusal": "WHAT_COULD_BREAK.md is not clean",
   "workflow": "clone-agent-graph",
   "estimated_minutes_saved": 40,
   "slow_brain_calls": 1,
-  "mean_latency_ms": 0.007,
-  "cost_per_decision": 0,
-  "note": "Full decision rows are produced by src/obzue_graph.py. This committed sample records the check: f2 split, f5 gated."
+  "cost_per_decision": 0
 }
