@@ -1,0 +1,16 @@
+{
+  "loops_closed": 3,
+  "forks_answered": 5,
+  "retries": 0,
+  "escalations": 2,
+  "least_sure": "f2",
+  "least_sure_margin": 0.08,
+  "unattended": false,
+  "refusal": "WHAT_COULD_BREAK.md is not clean",
+  "workflow": "clone-agent-graph",
+  "estimated_minutes_saved": 40,
+  "slow_brain_calls": 1,
+  "mean_latency_ms": 0.007,
+  "cost_per_decision": 0,
+  "note": "Full decision rows are produced by src/obzue_graph.py. This committed sample records the check: f2 split, f5 gated."
+}

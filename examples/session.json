@@ -1,0 +1,48 @@
+{
+  "workflow": "clone-agent-graph",
+  "estimated_minutes_saved": 40,
+  "forks": [
+    {
+      "id": "f1",
+      "question": "which_tool",
+      "options": ["pdf", "docx", "pptx"],
+      "features": {"pdf": 0.91, "docx": 0.22, "pptx": 0.11},
+      "check_passed": true,
+      "irreversible": false
+    },
+    {
+      "id": "f2",
+      "question": "which_file",
+      "options": ["graph.md", "README.md", "agent_graph.xml"],
+      "features": {"graph.md": 0.74, "README.md": 0.66, "agent_graph.xml": 0.40},
+      "check_passed": false,
+      "irreversible": false
+    },
+    {
+      "id": "f3",
+      "question": "done",
+      "options": ["yes", "no"],
+      "features": {"yes": 0.88, "no": 0.12},
+      "check_passed": true,
+      "irreversible": false
+    },
+    {
+      "id": "f4",
+      "question": "diff_risk",
+      "options": ["low", "high"],
+      "features": {"low": 0.81, "high": 0.19},
+      "check_passed": true,
+      "irreversible": false,
+      "risk": 0.19
+    },
+    {
+      "id": "f5",
+      "question": "which_tool",
+      "options": ["push_main", "open_pr"],
+      "features": {"push_main": 0.93, "open_pr": 0.20},
+      "check_passed": true,
+      "irreversible": true,
+      "verb": "push_main"
+    }
+  ]
+}
